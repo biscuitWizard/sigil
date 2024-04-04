@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN ionic build
+RUN npm run build
 
 # Serve stage
 FROM nginx:stable-alpine as serve-stage
