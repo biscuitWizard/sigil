@@ -1,22 +1,24 @@
 <template>
-  <ion-menu type="push" menu-id="sidebar" content-id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu Content</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">This is the menu content.</ion-content>
-  </ion-menu>
-  <ion-page id="main-content">   
-    <ion-content :fullscreen="true">
-      <ion-fab slot="fixed" vertical="top" horizontal="start">
-        <ion-fab-button @click="menuController.open('sidebar')">
-          <ion-icon :icon="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+  <ion-page>
+    <ion-menu type="push" menu-id="sidebar" content-id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu Content</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">This is the menu content.</ion-content>
+    </ion-menu>
+    <ion-page id="main-content">   
+      <ion-content :fullscreen="true">
+        <ion-fab slot="fixed" vertical="top" horizontal="start">
+          <ion-fab-button @click="menuController.open('sidebar')">
+            <ion-icon :icon="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
 
-      <character-sheet />
-    </ion-content>
+        <character-sheet />
+      </ion-content>
+    </ion-page>
   </ion-page>
 </template>
 
