@@ -35,7 +35,7 @@ export const useGameStore = defineStore({
             } catch (error) {
                 console.log(error);
             } finally {
-                this.loading = false
+                this.loading = false;
             }
         }
     }

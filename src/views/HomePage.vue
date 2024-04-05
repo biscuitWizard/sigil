@@ -53,8 +53,8 @@
 </template>
 
 <script setup lang="ts">
-
-import { IonPage, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonAccordionGroup, IonAccordion, IonContent } from '@ionic/vue';
+import {watch} from 'vue';
+import { IonPage, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonAccordionGroup, IonAccordion, IonContent, loadingController } from '@ionic/vue';
 import AttributeScore from "../components/AttributeScore.vue";
 import StatGroup from "../components/StatGroup.vue";
 import SkillScore from "../components/SkillScore.vue";
@@ -62,6 +62,18 @@ import SkillScore from "../components/SkillScore.vue";
 import { useGameStore } from "../stores/game";
 import { storeToRefs } from 'pinia'
 const { skills, getAttributes, loading } = storeToRefs(useGameStore());
+
+
+(async () => {
+  const loader = await loadingController.create({
+    message: 'Loading...',
+  });
+  watch(loading, async (newValue, oldValue) => {
+    if (newValue) loader.present();
+    else loader.dismiss();
+  });
+  if (loading.value) loader.present();
+})();
 
 const { fetchSkills } = useGameStore()
 fetchSkills();

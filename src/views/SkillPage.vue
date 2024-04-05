@@ -55,13 +55,26 @@ import {
     IonCardTitle,
     IonGrid,
     IonCol,
-    IonRow
+    IonRow,
+    loadingController
 } from '@ionic/vue';
 import { caretBack } from 'ionicons/icons';
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useGameStore } from "../stores/game";
 import { storeToRefs } from 'pinia'
 const { skills, loading } = storeToRefs(useGameStore());
+
+(async () => {
+  const loader = await loadingController.create({
+    message: 'Loading...',
+  });
+  watch(loading, async (newValue, oldValue) => {
+    if (newValue) loader.present();
+    else loader.dismiss();
+  });
+  if (loading.value) loader.present();
+})();
+
 const { fetchSkills } = useGameStore()
 fetchSkills();
 
