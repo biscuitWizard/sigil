@@ -4,9 +4,12 @@
       <ion-grid fixed>
         <ion-row class="ion-justify-content-center">
           <ion-col size-md="6" size-lg="5" size-xs="12">
-            <stat-group>
-
-            </stat-group>
+            <character-bio></character-bio>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-md="6" size-lg="5" size-xs="12">
+            <stat-group/>
           </ion-col>
         </ion-row>  
         <ion-row class="ion-justify-content-center">
@@ -54,10 +57,11 @@
 
 <script setup lang="ts">
 import {watch} from 'vue';
-import { IonPage, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonAccordionGroup, IonAccordion, IonContent, loadingController } from '@ionic/vue';
+import { IonCardTitle, IonCardContent, IonCard, IonPage, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonAccordionGroup, IonAccordion, IonContent, loadingController } from '@ionic/vue';
 import AttributeScore from "../components/AttributeScore.vue";
 import StatGroup from "../components/StatGroup.vue";
 import SkillScore from "../components/SkillScore.vue";
+import CharacterBio from "../components/CharacterBio.vue";
 
 import { useGameStore } from "../stores/game";
 import { storeToRefs } from 'pinia'
