@@ -30,8 +30,8 @@ export const useGameStore = defineStore({
             if (skill === undefined) return 0;
 
             let multiplier = 1;
-            if (skill.rank === 'advanced') multiplier = 2;
-            if (skill.rank === 'mastery') multiplier = 3;
+            if (skill.rank.toLowerCase() === 'advanced') multiplier = 2;
+            if (skill.rank.toLowerCase() === 'mastery') multiplier = 3;
             return new_rank * multiplier;
         }
     },
