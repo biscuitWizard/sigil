@@ -10,26 +10,26 @@
           </ion-col>
         </ion-row>  
         <ion-row class="ion-justify-content-center">
-          <ion-col size-md="3">
+          <ion-col size-md="2.5">
              <attribute-score name="brutality" :score=2></attribute-score>
           </ion-col>
-          <ion-col size-md="3">
+          <ion-col size-md="2.5">
              <attribute-score name="cunning" :score=2></attribute-score>
           </ion-col>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-          <ion-col size-md="3">
+          <ion-col size-md="2.5">
              <attribute-score name="wisdom" :score=2></attribute-score>
           </ion-col>
-          <ion-col size-md="3">
+          <ion-col size-md="2.5">
              <attribute-score name="intellect" :score=2></attribute-score>
           </ion-col>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-          <ion-col size-md="3">
+          <ion-col size-md="2.5">
              <attribute-score name="passion" :score=2></attribute-score>
           </ion-col>
-          <ion-col size-md="3">
+          <ion-col size-md="2.5">
              <attribute-score name="empathy" :score=2></attribute-score>
           </ion-col>
         </ion-row>

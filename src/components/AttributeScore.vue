@@ -3,12 +3,6 @@
     <li role="button" class="label">
       {{ name }}
     </li>
-    <li role="button"></li>
-    <li role="button"></li>
-    <li role="button"></li>
-    <li role="button"></li>
-    <li role="button"></li>
-    <li role="button"></li>
   </ul>
 </template>
 
@@ -92,7 +86,7 @@ defineProps({
 .step-menu li.label {
   background: rgba(51,122,183, 0.4);
   color: white;
-  width: 8em;
+  width: 80%;
   text-transform: uppercase;
 }
 
