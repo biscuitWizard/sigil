@@ -16,27 +16,38 @@
         <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
       </ion-avatar>
       <div class="fields">
-        
-        <ion-select aria-label="Culture" interface="popover" placeholder="Select Culture" justify="end" >
-          <ion-select-option value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
-        </ion-select>
-        <ion-select aria-label="Upbringing" interface="popover" placeholder="Select Upbringing" justify="end" >
-          <ion-select-option value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
-        </ion-select>
-        <ion-select aria-label="Origin" interface="popover" placeholder="Select Origin" justify="end" >
-          <ion-select-option value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
-        </ion-select>
-        <ion-select aria-label="Training" interface="popover" placeholder="Select Training" justify="end" >
-          <ion-select-option value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
-        </ion-select>
+        <ion-item>
+          <ion-note slot="start">Culture</ion-note>
+          <ion-select aria-label="Culture" interface="popover" placeholder="Select Culture" justify="end" >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-note slot="start">Upbringing</ion-note>
+          <ion-select aria-label="Upbringing" interface="popover" placeholder="Select Upbringing" justify="end" >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-note slot="start">Origin</ion-note>
+          <ion-select aria-label="Origin" interface="popover" placeholder="Select Origin" justify="end" >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-note slot="start">Training</ion-note>
+          <ion-select aria-label="Training" interface="popover" placeholder="Select Training" justify="end" >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
       </div>
     </ion-card-content>
   </ion-card>
@@ -44,7 +55,7 @@
 
 <script setup lang="ts">
 import { pencil } from 'ionicons/icons';
-import { IonSelectOption, IonCardHeader, IonCardTitle, IonCardSubtitle, IonAvatar, IonSelect, IonButton, IonIcon, IonCard, IonCardContent } from '@ionic/vue';
+import { IonItem, IonNote, IonSelectOption, IonCardHeader, IonCardTitle, IonCardSubtitle, IonAvatar, IonSelect, IonButton, IonIcon, IonCard, IonCardContent } from '@ionic/vue';
 
 </script>
 
