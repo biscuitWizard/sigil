@@ -3,7 +3,8 @@
     <div id="experience-bar" class="progress-container" @click="openPopover($event)">
       <div class="progress-bar">
         <div class="available-xp" :style="{width: progress + '%'}">
-          {{ availableExp }}
+          <span>{{ availableExp }} Available</span>
+          <span>{{  totalExp }} Total</span>
         </div>
       </div>
       <div class="bottom-bar">
@@ -94,7 +95,9 @@ const progress = computed(() => availableExp.value / totalExp.value * 100);
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-left: 1em;
+  padding-right: 1em;
 }
 
 .bottom-bar {
