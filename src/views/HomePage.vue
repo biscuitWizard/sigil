@@ -49,7 +49,12 @@
                   <ion-label>{{ attribute }}</ion-label>
                 </ion-item>
                 <div class="ion-padding" slot="content">
-                  <skill-score v-for="skill in skills.filter(s => s.attribute === attribute)" :key="skill.name" :name="skill.name" :type="skill.rank.toLowerCase()"/>
+                  <skill-score 
+                    v-for="skill in skills.filter(s => s.attribute === attribute)" 
+                    :key="skill.name" 
+                    :name="skill.name" 
+                    :type="skill.rank.toLowerCase()" 
+                    :rank="getCharacterSkillRank(currentCharacter, skill.name)"/>
                 </div>
               </ion-accordion>
             </ion-accordion-group>   
@@ -70,9 +75,10 @@ import CharacterBio from "../components/CharacterBio.vue";
 import ExperienceBar from "../components/ExperienceBar.vue";
 
 import { useGameStore } from "../stores/game";
+import { useCharacterStore } from "../stores/character";
 import { storeToRefs } from 'pinia'
 const { skills, getAttributes, loading } = storeToRefs(useGameStore());
-
+const { currentCharacter, getCharacterSkillRank } = storeToRefs(useCharacterStore());
 
 (async () => {
   const loader = await loadingController.create({
