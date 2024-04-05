@@ -9,6 +9,11 @@
         </ion-row>
         <ion-row class="ion-justify-content-center">
           <ion-col size-md="6" size-lg="5" size-xs="12">
+            <experience-bar :totalXP=20 :spentXP=20 :startingXP=40 :availableXP=40></experience-bar>
+          </ion-col>
+        </ion-row>  
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-md="6" size-lg="5" size-xs="12">
             <stat-group/>
           </ion-col>
         </ion-row>  
@@ -62,6 +67,7 @@ import AttributeScore from "../components/AttributeScore.vue";
 import StatGroup from "../components/StatGroup.vue";
 import SkillScore from "../components/SkillScore.vue";
 import CharacterBio from "../components/CharacterBio.vue";
+import ExperienceBar from "../components/ExperienceBar.vue";
 
 import { useGameStore } from "../stores/game";
 import { storeToRefs } from 'pinia'
