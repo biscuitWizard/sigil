@@ -53,11 +53,11 @@ Sigil's codebase is organized for clarity and scalability. For a detailed explan
 
 ## Continuous Deployment
 
-Sigil uses modern CI/CD practices for automated testing and deployment. For more details on our continuous deployment strategy and how to set it up for your forks, refer to the [Continuous Deployment Wiki](https://github.com/your-username/Sigil/wiki/Continuous-Deployment).
+Sigil uses modern CI/CD practices for automated testing and deployment. For more details on our continuous deployment strategy and how to set it up for your forks, refer to the [Continuous Deployment Wiki](https://github.com/biscuitWizard/Sigil/wiki/Continuous-Deployment).
 
 ## Lambda Functions
 
-The `/lambda` folder contains various AWS Lambda functions used by Sigil for backend processing and integration tasks. Each function is documented with its purpose, inputs, and outputs. For more information, visit the [Lambda Functions Wiki](https://github.com/your-username/Sigil/wiki/Lambda-Functions).
+The `/lambda` folder contains various AWS Lambda functions used by Sigil for backend processing and integration tasks. Each function is documented with its purpose, inputs, and outputs. For more information, visit the [Lambda Functions Wiki](https://github.com/biscuitWizard/Sigil/wiki/Lambda-Functions).
 
 ## Docker
 
