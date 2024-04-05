@@ -7,7 +7,7 @@
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size-md="6" size-lg="5" size-xs="12">
-        <experience-bar :totalXP=20 :spentXP=20 :startingXP=40 :availableXP=40></experience-bar>
+        <experience-bar :experience="currentCharacter.experience"></experience-bar>
       </ion-col>
     </ion-row>  
     <ion-row class="ion-justify-content-center">

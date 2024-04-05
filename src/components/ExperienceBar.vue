@@ -1,12 +1,12 @@
 <template>
   <div class="progress-container">
     <div class="progress-bar">
-      <div class="available-xp">
-        100 XP
+      <div class="available-xp" :style="{width: progress + '%'}">
+        {{ availableExp }}
       </div>
     </div>
     <div class="bottom-bar">
-      <div class="available-xp">
+      <div class="available-xp" :style="{width: progress + '%'}">
       </div>
     </div>
   </div>
@@ -20,9 +20,14 @@ const props = defineProps({
   experience: Array<TransactionLog>
 });
 
-// const spentXpWidth = computed(() => (props.spentXP / props.totalXP) * 100);
-// const startingXpWidth = computed(() => (props.startingXP / props.totalXP) * 100);
-// const availableXpWidth = computed(() => (props.availableXP / props.totalXP) * 100);
+const totalExp = computed(() => 
+  props.experience
+    .filter(log => log.amount > 0)
+    .reduce((accumulator, log) => accumulator + log.amount, 0));
+const availableExp = computed(() => 
+  props.experience
+        .reduce((accumulator, log) => accumulator + log.amount, 0))
+const progress = computed(() => availableExp.value / totalExp.value * 100);
 </script>
 
 <style scoped>

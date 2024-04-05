@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useGameStore } from './game';
 
 /**
  * A transaction log is just a note describing why we adjusted
@@ -7,6 +8,8 @@ import { defineStore } from 'pinia'
 export type TransactionLog = {
   reason: string;
   amount: number;
+  subject?: string;
+  type?: string;
 }
 
 export type Character = {
@@ -19,7 +22,7 @@ export type Character = {
 export const useCharacterStore = defineStore({
   id: 'character',
   state: () => ({
-    currentCharacter: {id: 0, name: '', skills: {}, experience: []} as Character,
+    currentCharacter: {id: 0, name: '', skills: {}, experience: [{reason: 'New Character', amount: 42}]} as Character,
     characters: [] as Character[],
     loading: false
   }),
@@ -33,7 +36,7 @@ export const useCharacterStore = defineStore({
      */
     getCharacterSkillRank: (state) => {
       return (character: Character, skill_id: string) => skill_id in character.skills ? character.skills[skill_id] : 0;
-    }
+    },
   },
   actions: {
     async newCharacter() {
@@ -43,7 +46,21 @@ export const useCharacterStore = defineStore({
       } as Character;
     },
     async purchaseSkillRank(skill_id: string) {
-      this.currentCharacter.skills[skill_id] = (this.currentCharacter.skills[skill_id] ?? 0) + 1;
+      const currentRank = this.currentCharacter.skills[skill_id] ?? 0;
+      const newRank = currentRank + 1;
+      const gameStore = useGameStore();
+      const cost = gameStore.getSkillRankCost(skill_id, newRank);
+
+      // Make an expenditure log
+      this.currentCharacter.experience.push({
+        reason: `Purchased ${skill_id} to rank ${newRank}.`,
+        subject: skill_id,
+        type: 'skill',
+        amount: cost * -1 // Spends are always negative
+      });
+
+      // Assign the new rank
+      this.currentCharacter.skills[skill_id] = newRank;
     },
     async refundSkillRank(skill_id: string) {
       // Check if the skill exists and its rank after decrementing would be 0 or less
