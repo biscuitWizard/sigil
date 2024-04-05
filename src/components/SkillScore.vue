@@ -146,6 +146,7 @@ const computedPadding = computed(() => {
   border-left-color: rgb(18, 18, 18);
   top: 0;
   right: -40px;
+  pointer-events: none; /* Ignore mouse events */
 }
 .step-menu li:after {
   content: '';
@@ -156,6 +157,7 @@ const computedPadding = computed(() => {
   right: -32px;
 
   transition: 0.2s;
+  pointer-events: none; /* Ignore mouse events */
 }
 .step-menu li:nth-child(1) {
   z-index:600;
