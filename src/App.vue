@@ -23,7 +23,7 @@ const characterStore = useCharacterStore();
 
 // The application will remain in loading until these stores have initialized...
 const waitForStores = [characterStore.$id, gameStore.$id];
-const isInitializing = ref(true);
+const isInitializing = ref(!waitForStores.every(s => initializedStores.value.includes(s)));
 watch(initializedStores, (newValue) => {
   isInitializing.value = !waitForStores.every(s => newValue.includes(s));
 });
