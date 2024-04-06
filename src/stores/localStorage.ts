@@ -10,20 +10,6 @@ declare module 'pinia' {
 }
 
 export const initializedStores = ref([] as Array<string>);
-
-// declare module 'pinia' {
-//   export interface PiniaCustomProperties {
-//     isInitialized: Ref<boolean>;
-//     setInitialized: (value: boolean) => void;
-//   }
-// }
-
-// declare module 'pinia' {
-//   export interface PiniaCustomStateProperties<S> {
-//     initialized: boolean
-//   }
-// }
-
 export function LocalStoragePlugin({ store }: PiniaPluginContext) {
   // Add isInitialized reactive property
   store.initialized = false;
