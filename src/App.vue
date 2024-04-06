@@ -1,7 +1,7 @@
 <template>
   <ion-app>
     <ion-router-outlet v-if="!isInitializing"/>
-    <ion-loading :isOpen="isInitializing" message="Application Initializing..."></ion-loading>
+    <ion-loading :isOpen="isInitializing" message="Application Initializing..." duration=750></ion-loading>
   </ion-app>
 </template>
 

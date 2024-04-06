@@ -8,7 +8,6 @@
             <ion-icon :icon="add"></ion-icon>
           </ion-fab-button>
         </ion-fab>
-
         <character-sheet />
       </ion-content>
     </ion-page>
