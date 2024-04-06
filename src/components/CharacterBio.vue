@@ -88,9 +88,9 @@ const props = defineProps({
 }
 
 .bio-content .avatar {
-  margin: 0 1em 0 1em;
   width: 150px;
   height: 150px;
+  flex-shrink: 0;
 }
 
 ion-avatar {
