@@ -8,7 +8,7 @@
             <ion-icon :icon="add"></ion-icon>
           </ion-fab-button>
         </ion-fab>
-        <character-sheet v-if="currentCharacter !== undefined"/>
+        <character-sheet v-if="currentCharacter !== undefined" :character="currentCharacter" />
       </ion-content>
     </ion-page>
   </ion-page>

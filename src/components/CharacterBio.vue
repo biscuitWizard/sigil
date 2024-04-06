@@ -3,7 +3,7 @@
     <ion-card-header>
       <ion-card-title class="bio-title">
         <ion-button size="small" fill="outline" class="name-button">
-          Character Name
+          {{ character.name }}
           <ion-icon slot="end" :icon="pencil"></ion-icon>
         </ion-button>
       </ion-card-title>
@@ -56,7 +56,11 @@
 <script setup lang="ts">
 import { pencil } from 'ionicons/icons';
 import { IonItem, IonNote, IonSelectOption, IonCardHeader, IonCardTitle, IonCardSubtitle, IonAvatar, IonSelect, IonButton, IonIcon, IonCard, IonCardContent } from '@ionic/vue';
+import { Character } from '@/stores/character';
 
+const props = defineProps({
+  character: {} as Character
+});
 </script>
 
 <style scoped>

@@ -2,12 +2,12 @@
   <ion-grid fixed>
     <ion-row class="ion-justify-content-center">
       <ion-col size-md="6" size-lg="5" size-xs="12">
-        <character-bio></character-bio>
+        <character-bio :character="character"></character-bio>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size-md="6" size-lg="5" size-xs="12">
-        <experience-bar :experience="currentCharacter.experience"></experience-bar>
+        <experience-bar :experience="character.experience"></experience-bar>
       </ion-col>
     </ion-row>  
     <ion-row class="ion-justify-content-center">
@@ -52,7 +52,7 @@
                 :key="skill.name" 
                 :name="skill.name" 
                 :type="skill.rank.toLowerCase()" 
-                :rank="getCharacterSkillRank(currentCharacter, skill.name)"/>
+                :rank="getCharacterSkillRank(character, skill.name)"/>
             </div>
           </ion-accordion>
         </ion-accordion-group>   
@@ -72,10 +72,14 @@ import CharacterBio from "../components/CharacterBio.vue";
 import ExperienceBar from "../components/ExperienceBar.vue";
 
 import { useGameStore } from "../stores/game";
-import { useCharacterStore } from "../stores/character";
+import { useCharacterStore, Character } from "../stores/character";
 import { storeToRefs } from 'pinia'
 const { skills, getAttributes, loading } = storeToRefs(useGameStore());
 const { currentCharacter, getCharacterSkillRank } = storeToRefs(useCharacterStore());
+
+const props = defineProps({
+  character: {} as Character
+});
 
 (async () => {
   const loader = await loadingController.create({
