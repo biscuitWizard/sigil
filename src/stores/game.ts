@@ -37,8 +37,10 @@ export const useGameStore = defineStore({
     },
     actions: {
         async initialize() {
-            const skills = await this.local.get('game.skills');
-            if (skills) this.skills = skills;
+            try {
+                const skills = await this.local.get('game.skills');
+                if (skills) this.skills = skills;
+            } finally {}
         },
         async fetchSkills() {
             if (this.skills.length > 0) {
