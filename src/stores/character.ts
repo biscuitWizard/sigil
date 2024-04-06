@@ -22,7 +22,7 @@ export type Character = {
 export const useCharacterStore = defineStore({
   id: 'character',
   state: () => ({
-    currentCharacter: {id: 0, name: '', skills: {}, experience: [{reason: 'New Character', amount: 42}]} as Character,
+    editingCharacterId: 0,
     characters: [] as Character[],
     loading: false
   }),
@@ -37,15 +37,35 @@ export const useCharacterStore = defineStore({
     getCharacterSkillRank: (state) => {
       return (character: Character, skill_id: string) => skill_id in character.skills ? character.skills[skill_id] : 0;
     },
+    currentCharacter: (state) => state.characters.find(c => c.id === state.editingCharacterId) 
   },
   actions: {
+    async initialize() {
+        try {
+            const characters = await this.local.get('character.all');
+            if (characters) this.characters = characters;
+        } finally {}
+        try {
+          const editingId = await this.local.get('character.editing_id');
+          if (editingId) this.editingCharacterId = editingId;
+        } finally {}
+    },
     async newCharacter() {
-      this.currentCharacter = {
-        name: 'Testeroni',
-        experience: [{reason: 'Starting XP', amount: 16}]
+      const newCharacter = {
+        id: Math.random() * -1,
+        name: 'Unnamed Character',
+        experience: [{reason: 'Starting XP', amount: 42}],
+        skills: {}
       } as Character;
+      this.characters.push(newCharacter);
+      this.editingCharacterId = newCharacter.id;
+
+      // Re-save characters to local storage.
+      // this.local.set('character.all', this.characters.values);
+      // this.local.set('character.editing_id', this.editingCharacterId);
     },
     async purchaseSkillRank(skill_id: string) {
+      if (this.currentCharacter === undefined) return;
       const currentRank = this.currentCharacter.skills[skill_id] ?? 0;
       const newRank = currentRank + 1;
       const gameStore = useGameStore();
@@ -63,6 +83,7 @@ export const useCharacterStore = defineStore({
       this.currentCharacter.skills[skill_id] = newRank;
     },
     async refundSkillRank(skill_id: string) {
+      if (this.currentCharacter === undefined) return;
       // Check if the skill exists and its rank after decrementing would be 0 or less
       if ((this.currentCharacter.skills[skill_id] ?? 0) - 1 <= 0) {
         // Delete the skill from the skills object if its new rank is 0 or less

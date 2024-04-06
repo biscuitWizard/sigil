@@ -8,7 +8,7 @@
             <ion-icon :icon="add"></ion-icon>
           </ion-fab-button>
         </ion-fab>
-        <character-sheet />
+        <character-sheet v-if="currentCharacter !== undefined"/>
       </ion-content>
     </ion-page>
   </ion-page>
@@ -19,7 +19,11 @@ import { IonFab, IonFabButton, IonIcon, IonContent, IonPage, menuController  } f
 import { add } from 'ionicons/icons';
 import CharacterSheet from '@/components/CharacterSheet.vue';
 import AppMenu from "@/components/AppMenu.vue";
-</script>
+import { useCharacterStore } from '@/stores/character';
+import { storeToRefs } from 'pinia';
 
-<style scoped>
-</style>
+const { currentCharacter } = storeToRefs(useCharacterStore());
+const { newCharacter } = useCharacterStore();
+if (currentCharacter.value === undefined) newCharacter();
+
+</script>

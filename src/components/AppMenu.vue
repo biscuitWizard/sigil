@@ -23,25 +23,18 @@
           <ion-item-divider>
             <ion-label> Offline Characters </ion-label>
           </ion-item-divider>
-          <ion-item lines="none" button>
+          <ion-item lines="none" button v-for="character in offlineCharacters">
             <ion-avatar aria-hidden="true" slot="start">
               <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
             </ion-avatar>
-            <ion-label>Testeroni</ion-label>
+            <ion-label>{{ character.name }}</ion-label>
           </ion-item>
-          <ion-item lines="none" button>
-            <ion-avatar aria-hidden="true" slot="start">
-              <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-            </ion-avatar>
-            <ion-label>Beefaroni</ion-label>
+          <ion-item>
+            <div style="display: flex; justify-content: center; width: 100%;">
+              <ion-button>New Character</ion-button>
+            </div>
           </ion-item>
         </ion-item-group>
-        <ion-item lines="none" button>
-            <ion-avatar aria-hidden="true" slot="start">
-              <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-            </ion-avatar>
-            <ion-label>Riggatoni</ion-label>
-          </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -49,4 +42,9 @@
 
 <script setup lang="ts">
 import { IonMenu, IonContent, IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonLabel, IonButton, IonIcon, IonAvatar, IonItemGroup, IonItemDivider, } from '@ionic/vue';
+import { computed } from 'vue';
+import { useCharacterStore } from "@/stores/character";
+const { characters } = useCharacterStore();
+
+const offlineCharacters = computed(() => characters.filter(c => !c || c.id <= 0));
 </script>
