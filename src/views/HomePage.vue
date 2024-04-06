@@ -1,13 +1,6 @@
 <template>
   <ion-page>
-    <ion-menu type="push" menu-id="sidebar" content-id="main-content">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu Content</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">This is the menu content.</ion-content>
-    </ion-menu>
+    <app-menu/>
     <ion-page id="main-content">   
       <ion-content :fullscreen="true">
         <ion-fab slot="fixed" vertical="top" horizontal="start">
@@ -23,9 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import { IonMenu, IonHeader, IonToolbar, IonTitle, IonFab, IonFabButton, IonIcon, IonContent, IonPage, menuController  } from '@ionic/vue';
+import { IonFab, IonFabButton, IonIcon, IonContent, IonPage, menuController  } from '@ionic/vue';
 import { add } from 'ionicons/icons';
 import CharacterSheet from '@/components/CharacterSheet.vue';
+import AppMenu from "@/components/AppMenu.vue";
 </script>
 
 <style scoped>
