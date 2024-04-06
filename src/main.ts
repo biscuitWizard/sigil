@@ -5,6 +5,8 @@ import router from './router';
 
 import { IonicVue } from '@ionic/vue';
 
+import {LocalStoragePlugin} from '@/stores/localStorage';
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -25,11 +27,13 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 const pinia = createPinia();
+pinia.use(LocalStoragePlugin);
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(pinia);
-  
+ 
 router.isReady().then(() => {
   app.mount('#app');
 });

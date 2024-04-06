@@ -36,6 +36,10 @@ export const useGameStore = defineStore({
         }
     },
     actions: {
+        async initialize() {
+            const skills = await this.local.get('game.skills');
+            if (skills) this.skills = skills;
+        },
         async fetchSkills() {
             if (this.skills.length > 0) {
                 console.log('using cached value');
@@ -45,14 +49,17 @@ export const useGameStore = defineStore({
             this.skills = [];
             this.loading = true;
             try {
-                this.skills = await fetch('https://tasu71quaf.execute-api.us-west-2.amazonaws.com/default/sigil-skills-query')
+                const skills = await fetch('https://tasu71quaf.execute-api.us-west-2.amazonaws.com/default/sigil-skills-query')
                     .then((response) => {
                         return response.json(); 
                     }) 
+                await this.local.set('game.skills', skills);
+                this.skills = skills;
             } catch (error) {
                 console.log(error);
             } finally {
                 this.loading = false;
+                
             }
         }
     }
